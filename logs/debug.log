@@ -1,0 +1,32 @@
+[12џэт.2024 10:14:46.024] [JDA RateLimit-Worker 1/DEBUG] [net.dv8tion.jda.internal.requests.RateLimiter/]: Caching bucket hash Route[GET](route=users/@me) -> 78bb8553d9352a5a2f89f9def401287a
+[12џэт.2024 10:14:46.033] [JDA RateLimit-Worker 1/DEBUG] [net.dv8tion.jda.internal.requests.Requester/]: Received response with following cf-rays: [8443f29e7da222fb-KBP]
+[12џэт.2024 10:14:46.332] [main/INFO] [net.dv8tion.jda.api.JDA/]: Login Successful!
+[12џэт.2024 10:14:46.414] [main/DEBUG] [net.dv8tion.jda.api.utils.SessionControllerAdapter/]: Creating new worker handle for shard pool 0
+[12џэт.2024 10:14:46.415] [main/DEBUG] [net.dv8tion.jda.api.utils.SessionControllerAdapter/]: Running worker
+[12џэт.2024 10:14:46.416] [ConcurrentSessionController-Worker-0/DEBUG] [net.dv8tion.jda.api.utils.SessionControllerAdapter/]: Running connect node for shard JDA.ShardInfo(currentShard=[0 / 1], totalShards=1)
+[12џэт.2024 10:14:46.770] [JDA MainWS-ReadThread/INFO] [net.dv8tion.jda.internal.requests.WebSocketClient/]: Connected to WebSocket
+[12џэт.2024 10:14:46.771] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.requests.WebSocketClient/]: Connected with gateway intents: 10011011011001111
+[12џэт.2024 10:14:46.771] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.requests.WebSocketClient/]: Sending Identify-packet...
+[12џэт.2024 10:14:46.794] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.requests.WebSocketClient/]: Got HELLO packet (OP 10). Initializing keep-alive.
+[12џэт.2024 10:14:47.012] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Setting incomplete count to 9
+[12џэт.2024 10:14:47.012] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Starting 75 second timeout for 9 guilds
+[12џэт.2024 10:14:47.120] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.entities.EntityBuilder/]: Finished setup for guild with a null owner. GuildId: 742320656749822084 OwnerId: 690961339199520799
+[12џэт.2024 10:14:47.125] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Finished setup for guild 742320656749822084 firing cached events 0
+[12џэт.2024 10:14:47.191] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.entities.EntityBuilder/]: Finished setup for guild with a null owner. GuildId: 571266147354148864 OwnerId: 412296861790109696
+[12џэт.2024 10:14:47.195] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Finished setup for guild 571266147354148864 firing cached events 0
+[12џэт.2024 10:14:47.204] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.entities.EntityBuilder/]: Finished setup for guild with a null owner. GuildId: 753290842520682546 OwnerId: 459274323744784384
+[12џэт.2024 10:14:47.205] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Finished setup for guild 753290842520682546 firing cached events 0
+[12џэт.2024 10:14:47.211] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.entities.EntityBuilder/]: Finished setup for guild with a null owner. GuildId: 841768315160625222 OwnerId: 316881208585879552
+[12џэт.2024 10:14:47.212] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Finished setup for guild 841768315160625222 firing cached events 0
+[12џэт.2024 10:14:47.229] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.entities.EntityBuilder/]: Finished setup for guild with a null owner. GuildId: 265698475335876608 OwnerId: 872078926338486282
+[12џэт.2024 10:14:47.229] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Finished setup for guild 265698475335876608 firing cached events 0
+[12џэт.2024 10:14:47.255] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.entities.EntityBuilder/]: Finished setup for guild with a null owner. GuildId: 374071874222686211 OwnerId: 165939947457478656
+[12џэт.2024 10:14:47.256] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Finished setup for guild 374071874222686211 firing cached events 0
+[12џэт.2024 10:14:47.265] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.entities.EntityBuilder/]: Finished setup for guild with a null owner. GuildId: 969971653440335873 OwnerId: 333077462026158081
+[12џэт.2024 10:14:47.266] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Finished setup for guild 969971653440335873 firing cached events 0
+[12џэт.2024 10:14:47.275] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.entities.EntityBuilder/]: Finished setup for guild with a null owner. GuildId: 949632947676393512 OwnerId: 316881208585879552
+[12џэт.2024 10:14:47.284] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Finished setup for guild 949632947676393512 firing cached events 0
+[12џэт.2024 10:14:47.288] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.entities.EntityBuilder/]: Finished setup for guild with a null owner. GuildId: 779768319921356811 OwnerId: 245517641895247872
+[12џэт.2024 10:14:47.296] [JDA MainWS-ReadThread/INFO] [net.dv8tion.jda.api.JDA/]: Finished Loading!
+[12џэт.2024 10:14:47.301] [JDA MainWS-ReadThread/DEBUG] [net.dv8tion.jda.internal.handle.GuildSetupController/]: Finished setup for guild 779768319921356811 firing cached events 0
+[12џэт.2024 10:15:15.355] [JDA RateLimit-Worker 2/DEBUG] [net.dv8tion.jda.internal.requests.RateLimiter/]: Removed 2 expired buckets
