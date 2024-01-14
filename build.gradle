@@ -95,6 +95,10 @@ repositories {
 dependencies {
     implementation fileTree("libs")
     minecraft 'net.minecraftforge:forge:1.19.2-43.3.0'
+    compileClasspath ("net.dv8tion:JDA:5.0.0-beta.1") {
+        exclude module: "opus-java"
+    }
+
 }
 
 jar {
