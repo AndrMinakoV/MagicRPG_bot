@@ -25,7 +25,7 @@ public class ExampleMod {
             startDiscordBot();
         }
     }
-
+//
     private static void startDiscordBot() {
         JDABuilder builder = JDABuilder.createDefault("");//
         builder.setActivity(Activity.watching("MagicRPG 1.19.2"));
