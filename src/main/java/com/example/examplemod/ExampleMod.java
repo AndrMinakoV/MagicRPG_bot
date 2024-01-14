@@ -27,7 +27,7 @@ public class ExampleMod {
     }
 
     private static void startDiscordBot() {
-        JDABuilder builder = JDABuilder.createDefault("NzQ2NDgzNTgzMjQxNDIwOTQx.G_RgLA.DcDELsHKMpa4pGRC7Io9DDZ-cPOek8rjP1fVWo");
+        JDABuilder builder = JDABuilder.createDefault("");
         builder.setActivity(Activity.watching("MagicRPG 1.19.2"));
         builder.enableIntents(GatewayIntent.GUILD_MEMBERS);
         builder.build();
