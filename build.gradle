@@ -95,7 +95,7 @@ repositories {
 dependencies {
     implementation fileTree("libs")
     minecraft 'net.minecraftforge:forge:1.19.2-43.3.0'
-    compileClasspath ("net.dv8tion:JDA:5.0.0-beta.1") {
+    implementation ("net.dv8tion:JDA:5.0.0-beta.1") {
         exclude module: "opus-java"
     }
 
@@ -135,3 +135,11 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 jar.finalizedBy('reobfJar')
+shadowJar {
+    dependencies {
+        include(dependency('net.dv8tion:JDA'))
+    }
+}
+
+
+tasks.build.dependsOn shadowJar
