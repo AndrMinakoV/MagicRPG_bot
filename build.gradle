@@ -5,6 +5,8 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
+apply plugin: 'com.github.johnrengelman.shadow'
+
 version = '1.0'
 group = 'com.yourname.modid' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'modid'
@@ -93,9 +95,9 @@ repositories {
 }
 
 dependencies {
-    implementation fileTree("libs")
     minecraft 'net.minecraftforge:forge:1.19.2-43.3.0'
-    implementation ("net.dv8tion:JDA:5.0.0-beta.1") {
+
+    minecraftLibrary("net.dv8tion:JDA:5.0.0-beta.1") {
         exclude module: "opus-java"
     }
 
@@ -135,11 +137,25 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 jar.finalizedBy('reobfJar')
+
 shadowJar {
-    dependencies {
-        include(dependency('net.dv8tion:JDA'))
-    }
+    mergeServiceFiles()
+    configurations = [project.configurations.getByName("minecraftLibrary")]
+
+    relocate('okhttp', 'examplemod.okhttp')
+    relocate('okio', 'examplemod.okio')
+    relocate('org.slf4j', 'examplemod.slf4j')
+    relocate('net.dv8tion.jda', 'examplemod.jda')
+    relocate('kotlin', 'examplemod.kotlin')
+    relocate('gnu.trove', 'examplemod.trove')
+    relocate('org.apache.commons', 'examplemod.apachecommons')
+    relocate('org.intellij', 'examplemod.intellij')
+    relocate('org.jetbrains', 'examplemod.jetbrains')
+    relocate('com.fasterxml', 'examplemod.fasterxml')
+    relocate('com.iwebpp.crypto', 'examplemod.iwebppcrypto')
+    relocate('com.neovisionaries.ws', 'examplemod.ws')
 }
 
-
-tasks.build.dependsOn shadowJar
+reobf {
+    shadowJar {}
+}
