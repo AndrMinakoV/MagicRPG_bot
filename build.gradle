@@ -99,6 +99,7 @@ dependencies {
 
     minecraftLibrary("net.dv8tion:JDA:5.0.0-beta.1") {
         exclude module: "opus-java"
+        exclude group: "org.jetbrains", module: "annotations"
     }
 
 }
