@@ -1,5 +1,6 @@
 package com.mecheniy.magicrpgbot;
 //ку Луприч я Стасян Кумысоед
+import com.mecheniy.magicrpgbot.events.BotListener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -20,6 +21,12 @@ import javax.security.auth.login.LoginException;
 
 @Mod(MagicrpgBot.MOD_ID)
 public class MagicrpgBot {
+    private static final long startTime;
+
+    static {
+        // Сохраняем текущее время в миллисекундах как время старта
+        startTime = System.currentTimeMillis();
+    }
     public static final String MOD_ID = "magicrpgbot";
     private static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     private static JDA jda;
@@ -32,21 +39,42 @@ public class MagicrpgBot {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            LOGGER.info("test_onClientSetup");
-            jda = startDiscordBot();
+            LOGGER.info("Initializing client setup.");
+
+            JDA jda = startDiscordBot(); // Инициализация Discord бота
+
             if (jda != null) {
-                // Теперь у нас есть экземпляр JDA, передайте его в ServerPlayerListUpdater
+                LOGGER.info("Discord bot started successfully.");
+
                 ServerPlayerListUpdater updater = new ServerPlayerListUpdater(jda);
-                List<String> dummyPlayerList = Arrays.asList("Player1", "Player2", "Player3"); // Это просто пример, замените на реальный список
-                updater.sendPlayerListEmbed(dummyPlayerList);
+
+                // Здесь необходимо получить данные о сервере и игроках
+                List<String> playerNames = Arrays.asList("Mecheniy");
+
+                // Получение строки с временной меткой для Discord
+                String uptimeMessage = getUptimeForDiscord();
+
+                double tps = 20.0; // Пример значения TPS
+
+                updater.sendPlayerListEmbed(playerNames, uptimeMessage, tps);
+            } else {
+                LOGGER.error("Failed to start Discord bot.");
             }
         }
-    }
+        public static String getUptimeForDiscord() {
+            // Получаем текущее время в секундах с начала эпохи Unix
+            long nowSeconds = System.currentTimeMillis() / 1000;
+            // Возвращаем временную метку для Discord
+            return String.format("<t:%d:R>", nowSeconds);
+        }
+
 
     private static JDA startDiscordBot() {
         try {
             JDABuilder builder = JDABuilder.createDefault("");
             builder.setActivity(Activity.watching("MagicRPG"));
+            builder.addEventListeners(new BotListener());
+
             builder.enableIntents(GatewayIntent.GUILD_MEMBERS);
             JDA jda = builder.build();
             jda.awaitReady(); // Подождать полной инициализации JDA
@@ -57,4 +85,4 @@ public class MagicrpgBot {
         }
         return null;
     }
-}
+}}
