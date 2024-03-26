@@ -3,7 +3,9 @@ package com.mecheniy.magicrpgbot.embed;
 import com.mecheniy.magicrpgbot.buttons.ButtonManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.ThreadChannel;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 
 import java.awt.*;
@@ -16,12 +18,14 @@ public class ServerPlayerListUpdater {
 
     private JDA jda;
     private String channelId;
+    private String threadId;
 
     public ServerPlayerListUpdater(JDA jda) {
         // Dotenv dotenv = Dotenv.load();
         this.jda = jda;
         // Предполагается, что CHANNEL_ID это имя переменной среды, в которой хранится ID Discord канала
-        this.channelId = "1214243958083821689";
+        this.channelId = "1222131081210499073";
+        this.threadId = "1222183057239314582";
     }
     public class GetUpTime {
 
@@ -40,39 +44,39 @@ public class ServerPlayerListUpdater {
             return;
         }
 
-        EmbedBuilder embed = new EmbedBuilder();
-        //buttons
+        // Предполагаем, что вы уже получили threadId каким-то образом
+        ThreadChannel thread = channel.getGuild().getThreadChannelById(threadId); // ID ветки
+        if (thread == null) {
+            System.err.println("Ветка не найдена. Убедитесь, что THREAD_ID верный.");
+            return;
+        }
         Button playersListButton = ButtonManager.createPlayersListButton();
         Button restartServerButton = ButtonManager.createRestartServerButton();
-
-        //
-
-        embed.setTitle("MagicRPG 1.19.2");
-
-        // Так как мы уже передаем отформатированное строковое сообщение, нам не нужно вызывать formatUptime
+        // Создание EmbedBuilder
+        EmbedBuilder embed = new EmbedBuilder();
+        embed.setTitle("EnigmaRPG 1.19.2");
         embed.addField("Последний рестарт", uptimeMessage, true);
-        embed.addField("TPS", String.valueOf(tps), true); // TPS как строку
-        // Если вы хотите добавить количество игроков в качестве поля:
+        embed.addField("TPS", String.valueOf(tps), true);
         embed.addField("Игроков на сервере", playerNames.isEmpty() ? "нет" : String.valueOf(playerNames.size()), true);
-
-        // Добавление имен игроков в описание, если это необходимо
-        /* if (!playerNames.isEmpty()) {
-            StringBuilder description = new StringBuilder();
-            for (String playerName : playerNames) {
-                description.append(playerName).append("\n");
-            }
-            embed.setDescription("Никнеймы игроков: " + description.toString());
-        } else {
-            embed.setDescription("На сервере нет игроков.");
-        }*/
-
         embed.setColor(Color.darkGray);
 
-        channel.sendMessageEmbeds(embed.build())
-                .setActionRow(playersListButton, restartServerButton)
-                .queue();;
+        // Поиск предыдущего сообщения от бота
+        thread.getIterableHistory().takeAsync(100).thenAccept(messages -> {
+            Message toEdit = messages.stream()
+                    .filter(msg -> msg.getAuthor().equals(jda.getSelfUser()) && !msg.getEmbeds().isEmpty()) // Проверяем, что это embed сообщение от бота
+                    .findFirst()
+                    .orElse(null);
 
+            if (toEdit != null) {
+                // Редактирование найденного сообщения новым embed
+                toEdit.editMessageEmbeds(embed.build()).setActionRow(playersListButton, restartServerButton).queue();
+            } else {
+                // Отправка нового сообщения, если подходящее сообщение не найдено
+                thread.sendMessageEmbeds(embed.build())   .setActionRow(playersListButton, restartServerButton).queue();
+            }
+        });
     }
+
 
     // Метод для форматирования времени аптайма
     private String formatUptime(long uptimeMillis) {
